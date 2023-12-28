@@ -1,4 +1,4 @@
-class stack:
+class Stack:
     ''' Stack implementation using list'''
     def __init__(self):
         self.items = []
@@ -15,5 +15,3 @@ class stack:
     def isEmpty(self):
         return self.items == 0
     
-if __name__ == '__main__':
-    stack = stack()
