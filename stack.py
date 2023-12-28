@@ -7,11 +7,14 @@ class Stack:
         self.items.append(item)
     
     def pop(self):
+        if self.is_empty():
+            return None  # Return None if stack is empty
         return self.items.pop()
     
     def size(self):
         return len(self.items)
     
-    def isEmpty(self):
-        return self.items == 0
+    def is_empty(self):
+        return self.items == []
+    
     

@@ -4,22 +4,29 @@ def is_balanced(expression: str) -> bool:
     """
     Return True if the expression is balanced, False otherwise.
     """
-    stack1 = Stack()
 
+    stack = Stack() # Create a stack object
     for char in expression:
-        if char == '(':
-            stack1.push(char)
-        elif char == ')':
-            if stack1.isEmpty():
-                return False
-            stack1.pop()
+        if char in "({[":
+            stack.push(char)
+        elif char in ")}]":
+            if stack.is_empty():
+                return False  # Closing bracket without a corresponding opening bracket
+            top = stack.pop()
+            if not is_matching(top, char):
+                return False  # Mismatched opening and closing brackets
 
-            top = stack1.pop()
-            if top != '(':
-                return False
-    
-    return stack1.isEmpty()
+    return stack.is_empty()
 
-if __name__ == '__main__':
-    expression1 = '(()()()())'
-    print(is_balanced(expression1))
+
+def is_matching(opening, closing):
+    bracket_pairs = {"(": ")", "{": "}", "[": "]"}
+    return bracket_pairs[opening] == closing
+
+
+# Example usage:
+expression1 = "{[()]}"
+expression2 = "{[(])}"
+
+print(f"Is balanced: {expression1} - {is_balanced(expression1)}")
+print(f"Is balanced: {expression2} - {is_balanced(expression2)}")
