@@ -11,10 +11,10 @@ def is_balanced(expression: str) -> bool:
             stack.push(char)
         elif char in ")}]":
             if stack.is_empty():
-                return False  # Closing bracket without a corresponding opening bracket
+                return False  # for closing bracket without a corresponding opening bracket
             top = stack.pop()
             if not is_matching(top, char):
-                return False  # Mismatched opening and closing brackets
+                return False  # for mismatched opening and closing brackets
 
     return stack.is_empty()
 
@@ -24,7 +24,7 @@ def is_matching(opening, closing):
     return bracket_pairs[opening] == closing
 
 
-# Example usage:
+# Examples:
 expression1 = "{[()]}"
 expression2 = "{[(])}"
 
